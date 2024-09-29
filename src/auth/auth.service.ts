@@ -15,7 +15,7 @@ import {
 } from './auth.dto';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
-import { MailerService } from './mailer.service'; // Реализовать отдельный сервис для отправки почты
+import { MailerService } from './mailer.service';
 
 @Injectable()
 export class AuthService {
@@ -49,13 +49,11 @@ export class AuthService {
 
     await this.userRepository.save(newUser);
 
-    // Отправка кода на почту для подтверждения
     const confirmationCode = Math.floor(
       100000 + Math.random() * 900000,
     ).toString();
     await this.mailerService.sendConfirmationEmail(email, confirmationCode);
 
-    // Сохранение кода подтверждения в базе данных (для примера хранится прямо в таблице пользователя)
     newUser.confirmationCode = confirmationCode;
     await this.userRepository.save(newUser);
   }

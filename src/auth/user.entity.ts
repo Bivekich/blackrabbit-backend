@@ -31,9 +31,9 @@ export class User {
   @Column({ default: new Date() })
   subscriptionExpiry: Date;
 
-  @Column({ nullable: true }) // Добавляем confirmationCode
+  @Column({ nullable: true })
   confirmationCode: string;
 
-  @Column({ nullable: true }) // Добавляем resetPasswordCode
+  @Column({ nullable: true })
   resetPasswordCode: string;
 }
