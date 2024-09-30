@@ -5,10 +5,10 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('Auth API')
-    .setDescription('API для регистрации, авторизации и восстановления пароля')
+    .setTitle('BlackRabbit API')
+    .setDescription('API для BlackRabbit')
     .setVersion('1.0')
-    .addTag('auth')
+    .addTag('blackrabbit')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);

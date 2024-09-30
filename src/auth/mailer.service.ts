@@ -21,8 +21,8 @@ export class MailerService {
     await this.transporter.sendMail({
       from: process.env.MAIL_USER,
       to: email,
-      subject: 'Email Confirmation',
-      text: `Your confirmation code is: ${code}`,
+      subject: 'Подтверждение по электронной почте',
+      text: `Ваш код подтверждения: ${code}`,
     });
   }
 
@@ -30,8 +30,8 @@ export class MailerService {
     await this.transporter.sendMail({
       from: process.env.MAIL_USER,
       to: email,
-      subject: 'Password Reset',
-      text: `Your password reset code is: ${code}`,
+      subject: 'Сброс пароля',
+      text: `Ваш код для сброса пароля: ${code}`,
     });
   }
 }
