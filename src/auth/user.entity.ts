@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Watchlist } from './watchlist.entity';
+import { MovieCollection } from './movie-collection.entity';
+import { ViewingHistory } from './viewing-history.entity';
 
 export enum UserRole {
   USER = 'user',
@@ -36,4 +39,13 @@ export class User {
 
   @Column({ nullable: true })
   resetPasswordCode: string;
+
+  @OneToMany(() => Watchlist, (watchlist) => watchlist.user)
+  watchlist: Watchlist[];
+
+  @OneToMany(() => MovieCollection, (collection) => collection.user)
+  movieCollection: MovieCollection[];
+
+  @OneToMany(() => ViewingHistory, (history) => history.user)
+  viewingHistory: ViewingHistory[];
 }

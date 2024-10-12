@@ -1,4 +1,3 @@
-// src/movies/movie.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Category } from '../categories/category.entity';
 

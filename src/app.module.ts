@@ -5,6 +5,11 @@ import { AuthModule } from './auth/auth.module';
 import { User } from './auth/user.entity';
 import { CategoriesModule } from './categories/categories.module';
 import { MoviesModule } from './movies/movies.module';
+import { Watchlist } from './auth/watchlist.entity';
+import { MovieCollection } from './auth/movie-collection.entity';
+import { ViewingHistory } from './auth/viewing-history.entity';
+import { Category } from './categories/category.entity';
+import { Movie } from './movies/movie.entity';
 
 @Module({
   imports: [
@@ -18,7 +23,14 @@ import { MoviesModule } from './movies/movies.module';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [User],
+      entities: [
+        User,
+        Watchlist,
+        MovieCollection,
+        ViewingHistory,
+        Category,
+        Movie,
+      ],
       synchronize: true,
     }),
     AuthModule,

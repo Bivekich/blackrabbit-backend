@@ -8,10 +8,20 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 import { MailerService } from './mailer.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Watchlist } from './watchlist.entity';
+import { MovieCollection } from './movie-collection.entity';
+import { ViewingHistory } from './viewing-history.entity';
+import { UserProfileService } from './user-profile.service';
+import { UserProfileController } from './user-profile.controller';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([
+      User,
+      Watchlist,
+      MovieCollection,
+      ViewingHistory,
+    ]),
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -24,7 +34,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
     }),
   ],
-  providers: [AuthService, JwtStrategy, MailerService],
-  controllers: [AuthController],
+  providers: [AuthService, JwtStrategy, MailerService, UserProfileService],
+  controllers: [AuthController, UserProfileController],
 })
 export class AuthModule {}
