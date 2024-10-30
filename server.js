@@ -5,6 +5,7 @@ import { connectDB } from "./config/db.js";
 import userRouters from "./routes/UserRoutes.js";
 import moviesRouters from "./routes/MoviesRoutes.js";
 import categoriesRouters from "./routes/CategoriesRoutes.js";
+import Uploadrouter from "./controllers/UploadFile.js";
 import { errorHandler } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRouters);
 app.use("/api/movies", moviesRouters);
 app.use("/api/categories", categoriesRouters);
+app.use("/api/upload", Uploadrouter);
 
 app.use(errorHandler);
 
